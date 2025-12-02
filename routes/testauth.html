@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Testar Auth</title>
+</head>
+<body>
+<h1>TESTAR LOGIN & REGISTRO</h1>
+
+<h2>Registrar</h2>
+<input id="regNome" placeholder="Nome"><br>
+<input id="regEmail" placeholder="Email"><br>
+<input id="regSenha" placeholder="Senha" type="password"><br>
+<button onclick="registrar()">Registrar</button>
+
+<h2>Login</h2>
+<input id="logEmail" placeholder="Email"><br>
+<input id="logSenha" placeholder="Senha" type="password"><br>
+<button onclick="login()">Login</button>
+
+<pre id="resposta"></pre>
+
+<script>
+async function registrar() {
+    const nome = document.getElementById("regNome").value;
+    const email = document.getElementById("regEmail").value;
+    const senha = document.getElementById("regSenha").value;
+
+    const r = await fetch("http://localhost:3000/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nome, email, senha })
+    });
+
+    document.getElementById("resposta").innerText = await r.text();
+}
+
+async function login() {
+    const email = document.getElementById("logEmail").value;
+    const senha = document.getElementById("logSenha").value;
+
+    const r = await fetch("http://localhost:3000/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, senha })
+    });
+
+    document.getElementById("resposta").innerText = await r.text();
+}
+</script>
+
+</body>
+</html>

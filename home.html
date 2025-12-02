@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Ashez - Home</title>
+    <link rel="stylesheet" href="./home.css">
+</head>
+<body>
+
+<div id="container">
+
+    <!-- USER INFO -->
+    <div id="user-box">
+        <img id="userFoto">
+        <h2 id="userNome"></h2>
+        <button id="logout">Sair</button>
+    </div>
+
+    <!-- SEARCH -->
+    <div id="search-box">
+        <input type="text" id="searchInput" placeholder="Pesquisar usuários...">
+        <div id="searchResults"></div>
+    </div>
+
+    <!-- SOLICITAÇÕES -->
+    <div class="section">
+        <h3>Solicitações recebidas</h3>
+        <div id="requestsList"></div>
+    </div>
+
+    <!-- AMIGOS -->
+    <div class="section">
+        <h3>Seus amigos</h3>
+        <div id="friendsList"></div>
+    </div>
+
+</div>
+
+<script src="./home.js"></script>
+
+</body>
+</html>
