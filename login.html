@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
-  <link rel="stylesheet" href="./login.css">
+  <link rel="stylesheet" href="login.css">
 </head>
 <body>
+  <div class="login-container">
+    <h1>Login</h1>
+    <input id="email" type="email" placeholder="Email">
+    <input id="senha" type="password" placeholder="Senha">
+    <button onclick="login()">Entrar</button>
+    <p>Não tem conta? <a href="register.html">Cadastre-se</a></p>
+  </div>
 
- <h1>Login</h1>
-
-<input id="email" placeholder="Email"><br>
-<input id="senha" type="password" placeholder="Senha"><br>
-
-<button onclick="window.location.href='amigos.html'">Entrar</button>
-
-  <script src="./login.js"></script>
+  <script src="login.js"></script>
 </body>
 </html>

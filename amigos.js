@@ -1,47 +1,85 @@
-const searchBtn = document.getElementById("searchBtn");
-const searchInput = document.getElementById("searchInput");
-const resultsDiv = document.getElementById("results");
+// 🔹 Logout
+document.getElementById("logoutBtn").addEventListener("click", async ()=>{
+  try{
+    await fetch("http://localhost:3000/logout",{method:"POST", credentials:"include"});
+    window.location.href = "login.html";
+  } catch(err){
+    console.error(err);
+    alert("Erro ao fazer logout");
+  }
+});
 
-searchBtn.addEventListener("click", buscarUsuario);
+// 🔹 Carregar amigos
+async function carregarAmigos(){
+  try{
+    const res = await fetch("http://localhost:3000/amizades",{credentials:"include"});
+    const amigos = await res.json();
+    const lista = document.getElementById("listaAmigos");
+    lista.innerHTML = "";
 
-async function buscarUsuario() {
-    const texto = searchInput.value.trim();
-    
-    if (!texto) {
-        resultsDiv.innerHTML = "<p>Digite algo para buscar.</p>";
-        return;
-    }
-
-    const resposta = await fetch(`/buscar-usuarios?nome=${encodeURIComponent(texto)}`);
-    const dados = await resposta.json();
-
-    if (dados.length === 0) {
-        resultsDiv.innerHTML = "<p>Nenhum usuário encontrado.</p>";
-        return;
-    }
-
-    resultsDiv.innerHTML = "";
-
-    dados.forEach(user => {
-        const box = document.createElement("div");
-        box.className = "user-result";
-
-        box.innerHTML = `
-            <strong>${user.username}</strong><br>
-            <button class="add-btn" onclick="adicionar(${user.id})">Adicionar</button>
-        `;
-
-        resultsDiv.appendChild(box);
+    amigos.forEach(amigo=>{
+      const div = document.createElement("div");
+      div.classList.add("usuario");
+      div.innerHTML = `
+        <img src="${amigo.foto_url}" alt="${amigo.nome}" class="foto">
+        <span>${amigo.nome}</span>
+        <a href="profile.html?id=${amigo.id}">Ver Perfil</a>
+      `;
+      lista.appendChild(div);
     });
+  } catch(err){
+    console.error(err);
+    alert("Erro ao carregar amigos");
+  }
 }
 
-async function adicionar(id) {
-    const resp = await fetch("/add-amigo", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ idAmigo: id })
-    });
+// 🔹 Buscar usuários
+const inputBusca = document.getElementById("inputBusca");
+const resultados = document.getElementById("resultadosBusca");
 
-    const data = await resp.json();
-    alert(data.msg);
-}
+inputBusca.addEventListener("input", async ()=>{
+  const nome = inputBusca.value.trim();
+  if(!nome){
+    resultados.innerHTML="";
+    return;
+  }
+  try{
+    const res = await fetch(`http://localhost:3000/buscar-usuarios?nome=${nome}`, {credentials:"include"});
+    const users = await res.json();
+
+    resultados.innerHTML="";
+    users.forEach(user=>{
+      const div = document.createElement("div");
+      div.classList.add("usuario");
+      div.innerHTML = `
+        <img src="${user.foto_url}" alt="${user.nome}" class="foto">
+        <span>${user.nome}</span>
+        <button data-id="${user.id}">Adicionar</button>
+      `;
+      resultados.appendChild(div);
+
+      // Adicionar amigo sem substituir
+      div.querySelector("button").addEventListener("click", async ()=>{
+        try{
+          await fetch("http://localhost:3000/add-amigo", {
+            method:"POST",
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify({idAmigo: user.id}),
+            credentials:"include"
+          });
+          alert(`${user.nome} adicionado!`);
+          carregarAmigos(); // atualizar lista de amigos
+        } catch(err){
+          console.error(err);
+          alert("Erro ao adicionar amigo");
+        }
+      });
+    });
+  } catch(err){
+    console.error(err);
+    resultados.innerHTML="";
+  }
+});
+
+// Inicializar
+carregarAmigos();

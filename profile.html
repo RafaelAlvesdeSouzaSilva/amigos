@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil</title>
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+  <!-- Header / Navegação -->
+  <header>
+    <div class="logo">Ashez</div>
+    <nav>
+      <a href="amigos.html">Amigos</a>
+      <a href="profile.html">Perfil</a>
+      <a href="#" id="logoutBtn">Sair</a>
+    </nav>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main>
+    <section class="perfil-section">
+      <h2>Meu Perfil</h2>
+      
+      <!-- Foto atual -->
+      <div class="foto-container">
+        <img id="fotoAtual" src="https://i.imgur.com/QpZyV2K.png" alt="Minha Foto">
+      </div>
+
+      <!-- Formulário para atualizar foto -->
+      <form id="formFoto">
+        <input type="file" id="foto" accept="image/*"><br>
+        <button type="submit">Atualizar Foto</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2025 Ashez Clone. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- JS de perfil -->
+  <script src="profile.js"></script>
+</body>
+</html>

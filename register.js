@@ -1,21 +1,34 @@
-async function register() {
-    const nome = document.getElementById("nome").value;
-    const email = document.getElementById("email").value;
-    const senha = document.getElementById("senha").value;
+const form = document.getElementById("registerForm");
 
-    const res = await fetch("http://localhost:3000/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nome, email, senha })
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const nome = document.getElementById("nome").value;
+  const email = document.getElementById("email").value;
+  const senha = document.getElementById("senha").value;
+  const foto = document.getElementById("foto").files[0]; // arquivo selecionado
+
+  const formData = new FormData();
+  formData.append("nome", nome);
+  formData.append("email", email);
+  formData.append("senha", senha);
+  if (foto) formData.append("foto", foto);
+
+  try {
+    const res = await fetch("http://localhost:3000/register", {
+      method: "POST",
+      body: formData
     });
 
     const data = await res.json();
-
     if (data.error) {
-        alert(data.error);
-        return;
+      alert("Erro: " + data.error);
+    } else {
+      alert(data.msg || "Cadastro realizado com sucesso!");
+      window.location.href = "login.html"; // redireciona para login
     }
-
-    alert("Conta criada com sucesso!");
-    window.location.href = "./login.html";
-}
+  } catch (err) {
+    console.error("Erro no cadastro:", err);
+    alert("Erro ao registrar usuário.");
+  }
+});

@@ -1,23 +1,41 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Amigos</title>
-    <link rel="stylesheet" href="amigos.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amigos</title>
+  <link rel="stylesheet" href="amigos.css">
 </head>
 <body>
+  <!-- Header -->
+  <header>
+    <div class="logo">Ashez</div>
+    <nav>
+      <a href="amigos.html">Amigos</a>
+      <a href="profile.html">Perfil</a>
+      <a href="#" id="logoutBtn">Sair</a>
+    </nav>
+  </header>
 
-    <div class="container">
-        <h1>Adicionar Amigos</h1>
+  <!-- Conteúdo principal -->
+  <main>
+    <section class="buscar-usuario">
+      <h2>Buscar Usuário</h2>
+      <input type="text" id="inputBusca" placeholder="Digite o nome do usuário">
+      <div id="resultadosBusca" class="resultados"></div>
+    </section>
 
-        <div class="search-box">
-            <input id="searchInput" type="text" placeholder="Buscar usuário">
-            <button id="searchBtn">Buscar</button>
-        </div>
+    <section class="lista-amigos">
+      <h2>Meus Amigos</h2>
+      <div id="listaAmigos" class="resultados"></div>
+    </section>
+  </main>
 
-        <div id="results"></div>
-    </div>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Ashez Clone. Todos os direitos reservados.</p>
+  </footer>
 
-    <script src="amigos.js"></script>
+  <script src="amigos.js"></script>
 </body>
 </html>

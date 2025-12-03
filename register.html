@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Registrar</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro</title>
+  <link rel="stylesheet" href="./login.css">
 </head>
 <body>
-    <h2>Registrar</h2>
+  <div class="login-container">
+    <h1>Registrar</h1>
+    <input id="nome" type="text" placeholder="Nome">
+    <input id="email" type="email" placeholder="Email">
+    <input id="senha" type="password" placeholder="Senha">
+    <label>Foto de perfil:</label>
+  <input type="file" id="foto" accept="image/*">
+    <button onclick="register()">Cadastrar</button>
+    <p>Já tem conta? <a href="./login.html">Entre aqui</a></p>
+  </div>
 
-    <input id="nome" placeholder="Nome"><br>
-    <input id="email" placeholder="Email"><br>
-    <input id="senha" type="password" placeholder="Senha"><br>
-
-    <button onclick="register()">Criar Conta</button>
-
-    <br><br>
-    <a href="./login.html">Já tenho conta</a>
-
-    <script src="./register.js"></script>
+  <script src="./register.js"></script>
 </body>
 </html>
