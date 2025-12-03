@@ -4,45 +4,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amigos</title>
-  <link rel="stylesheet" href="amigos.css">
+  <link rel="stylesheet" href="./amigos.css">
 </head>
 <body>
 
-  <header>
-    <div class="logo">Ashez</div>
-    <nav>
-      <a href="amigos.html">Amigos</a>
-      <a href="profile.html">Perfil</a>
-      <a href="#" id="logoutBtn">Sair</a>
-    </nav>
-  </header>
+<header>
+  <div class="logo">Ashez</div>
+  <nav>
+    <a href="./amigos.html">Amigos</a>
+    <a href="./profile.html">Perfil</a>
+    <a href="#" id="logoutBtn">Sair</a>
+  </nav>
+</header>
 
-  <main>
-    <section class="amigos-container">
+<main>
 
-      <h2>Meus Amigos</h2>
-      <div id="listaAmigos" class="lista"></div>
+  <section class="bloco">
+    <h2>Meus Amigos</h2>
+    <ul id="listaAmigos"></ul>
+  </section>
 
-      <hr>
+  <section class="bloco">
+    <h2>Solicitações Recebidas</h2>
+    <ul id="solicitacoesRecebidas"></ul>
+  </section>
 
-      <h2>Pedidos Recebidos</h2>
-      <div id="listaRecebidos" class="lista"></div>
+  <section class="bloco">
+    <h2>Solicitações Enviadas</h2>
+    <ul id="solicitacoesEnviadas"></ul>
+  </section>
 
-      <hr>
+  <section class="bloco">
+    <h2>Procurar Usuários</h2>
+    <input type="text" id="pesquisa" placeholder="Digite o nome...">
+    <button id="btnPesquisar">Pesquisar</button>
+    <ul id="resultadosPesquisa"></ul>
+  </section>
 
-      <h2>Pesquisar Usuários</h2>
-      <input type="text" id="pesquisa" placeholder="Digite o nome do usuário">
-      <button id="btnPesquisar">Pesquisar</button>
+</main>
 
-      <div id="resultadosPesquisa" class="lista"></div>
-
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Ashez Clone. Todos os direitos reservados.</p>
-  </footer>
-
-  <script src="amigos.js"></script>
+<script src="./amigos.js"></script>
 </body>
 </html>
