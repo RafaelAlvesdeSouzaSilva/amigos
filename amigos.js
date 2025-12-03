@@ -1,6 +1,4 @@
-// ---------------------------
 // LOGOUT
-// ---------------------------
 document.getElementById("logoutBtn").onclick = async () => {
   await fetch("http://localhost:3000/logout", {
     method: "POST",
@@ -9,9 +7,9 @@ document.getElementById("logoutBtn").onclick = async () => {
   window.location.href = "login.html";
 };
 
-// ---------------------------
+// ===============================
 // CARREGAR AMIGOS
-// ---------------------------
+// ===============================
 async function carregarAmigos() {
   const res = await fetch("http://localhost:3000/amigos", {
     credentials: "include"
@@ -31,9 +29,9 @@ async function carregarAmigos() {
   });
 }
 
-// ---------------------------
+// ===============================
 // CARREGAR SOLICITAÇÕES RECEBIDAS
-// ---------------------------
+// ===============================
 async function carregarSolicitacoesRecebidas() {
   const res = await fetch("http://localhost:3000/solicitacoes/recebidas", {
     credentials: "include"
@@ -63,6 +61,7 @@ async function carregarSolicitacoesRecebidas() {
   });
 }
 
+// ACEITAR SOLICITAÇÃO
 async function aceitarSolicitacao(idSolicitacao, idAmigo) {
   await fetch("http://localhost:3000/solicitacao/aceitar", {
     method: "POST",
@@ -75,6 +74,7 @@ async function aceitarSolicitacao(idSolicitacao, idAmigo) {
   carregarAmigos();
 }
 
+// RECUSAR SOLICITAÇÃO
 async function recusarSolicitacao(idSolicitacao) {
   await fetch("http://localhost:3000/solicitacao/recusar", {
     method: "POST",
@@ -86,9 +86,9 @@ async function recusarSolicitacao(idSolicitacao) {
   carregarSolicitacoesRecebidas();
 }
 
-// ---------------------------
+// ===============================
 // CARREGAR SOLICITAÇÕES ENVIADAS
-// ---------------------------
+// ===============================
 async function carregarSolicitacoesEnviadas() {
   const res = await fetch("http://localhost:3000/solicitacoes/enviadas", {
     credentials: "include"
@@ -109,9 +109,9 @@ async function carregarSolicitacoesEnviadas() {
   });
 }
 
-// ---------------------------
+// ===============================
 // BUSCAR USUÁRIOS
-// ---------------------------
+// ===============================
 document.getElementById("btnPesquisar").onclick = buscarUsuarios;
 
 async function buscarUsuarios() {
@@ -141,6 +141,7 @@ async function buscarUsuarios() {
   });
 }
 
+// ENVIAR SOLICITAÇÃO
 async function enviarSolicitacao(idDestinatario) {
   await fetch("http://localhost:3000/solicitacao/enviar", {
     method: "POST",
@@ -152,7 +153,9 @@ async function enviarSolicitacao(idDestinatario) {
   carregarSolicitacoesEnviadas();
 }
 
-// ---------------------------
+// ===============================
+// INICIAR
+// ===============================
 carregarAmigos();
 carregarSolicitacoesRecebidas();
 carregarSolicitacoesEnviadas();
