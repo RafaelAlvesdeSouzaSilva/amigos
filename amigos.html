@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="amigos.css">
 </head>
 <body>
-  <!-- Header -->
+
   <header>
     <div class="logo">Ashez</div>
     <nav>
@@ -17,21 +17,28 @@
     </nav>
   </header>
 
-  <!-- Conteúdo principal -->
   <main>
-    <section class="buscar-usuario">
-      <h2>Buscar Usuário</h2>
-      <input type="text" id="inputBusca" placeholder="Digite o nome do usuário">
-      <div id="resultadosBusca" class="resultados"></div>
-    </section>
+    <section class="amigos-container">
 
-    <section class="lista-amigos">
       <h2>Meus Amigos</h2>
-      <div id="listaAmigos" class="resultados"></div>
+      <div id="listaAmigos" class="lista"></div>
+
+      <hr>
+
+      <h2>Pedidos Recebidos</h2>
+      <div id="listaRecebidos" class="lista"></div>
+
+      <hr>
+
+      <h2>Pesquisar Usuários</h2>
+      <input type="text" id="pesquisa" placeholder="Digite o nome do usuário">
+      <button id="btnPesquisar">Pesquisar</button>
+
+      <div id="resultadosPesquisa" class="lista"></div>
+
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Ashez Clone. Todos os direitos reservados.</p>
   </footer>
